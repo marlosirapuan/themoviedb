@@ -21,6 +21,14 @@ module Tmdb
         self.config[:language] = lang
       end
     end
+    
+    def self.append_to_response(inc)
+      if (inc.nil?)
+        self.config.delete(:append_to_response)
+      else
+        self.config[:append_to_response] = inc
+      end
+    end
 
     def self.etag(etag)
       headers 'If-None-Match' => '"' + etag + '"'
